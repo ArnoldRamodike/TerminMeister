@@ -16,7 +16,7 @@ const RegisterModal = () => {
     const registerModal = useRegisterModal();
     const [isLoading, setIsLoading] = useState(false);
 
-    const {register, handlSubmit, 
+    const {register, handleSubmit, 
         formState: {
             errors,
             }
@@ -77,7 +77,7 @@ const RegisterModal = () => {
         title='Register'
         actionLabel='Continue'
         onCLose={registerModal.onClose}
-        // onSubmit={handlSubmit(onSubmit)} 
+        onSubmit={handleSubmit(onSubmit)} 
         body={bodyContent}
         footer={footerContent}
     />
