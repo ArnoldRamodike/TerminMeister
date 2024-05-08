@@ -8,6 +8,7 @@ import useRegisterModal from '@/hooks/useRegisterModal'
 import useLoginModal from '@/hooks/useLoginModal'
 import { signOut } from 'next-auth/react'
 import { SafeUser } from '@/app/types'
+import useRentModal from '@/hooks/useRentModel'
 
 interface UserMenuProps{
     currentUser?: SafeUser | null;
@@ -16,15 +17,26 @@ interface UserMenuProps{
 const UserMenu:React.FC<UserMenuProps> = ({currentUser}) => {
     const registerModal = useRegisterModal();
     const loginModal = useLoginModal();
+    const rentModel = useRentModal();
     const [isOpen, setisOpen] = useState(false);
 
     const toggleOpen = useCallback(() => {
         setisOpen((value) => !value);
-    }, [])
+    }, []);
+
+    const onRent = useCallback(() => {
+        if (!currentUser) {
+            return loginModal.onOpen();
+        }
+        //Open rent Model
+        rentModel.onOpen()
+;
+    },[currentUser, loginModal, rentModel],)
+
   return (
     <div className='relative'>
         <div className="flex flex-row items-center gap-3">
-            <div className="hidden md:block font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer" onClick={() => {}}>
+            <div className="hidden md:block font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer" onClick={onRent}>
                 Airbnb your home
             </div>
             <div onClick={toggleOpen} className="p-4 md:py-1 md:px-2 border-[1px] border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition" >
@@ -43,7 +55,7 @@ const UserMenu:React.FC<UserMenuProps> = ({currentUser}) => {
                          <MenuItem onClick={() => {}} label='My favoritew'/>
                          <MenuItem onClick={() => {}} label='My Reservations'/>
                          <MenuItem onClick={() => {}} label='My Properties'/>
-                         <MenuItem onClick={() => {}} label='My Airbnb my Home'/>
+                         <MenuItem onClick={() => rentModel.onOpen()} label='My Airbnb my Home'/>
                          <hr />
                          <MenuItem onClick={() =>signOut() } label='Logout'/>
                      </>
