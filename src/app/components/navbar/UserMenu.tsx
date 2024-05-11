@@ -52,7 +52,7 @@ const UserMenu:React.FC<UserMenuProps> = ({currentUser}) => {
                     {currentUser? (
                          <>
                          <MenuItem onClick={() => {}} label='My trips'/>
-                         <MenuItem onClick={() => {}} label='My favoritew'/>
+                         <MenuItem onClick={() => {}} label='My favorites'/>
                          <MenuItem onClick={() => {}} label='My Reservations'/>
                          <MenuItem onClick={() => {}} label='My Properties'/>
                          <MenuItem onClick={() => rentModel.onOpen()} label='My Airbnb my Home'/>
