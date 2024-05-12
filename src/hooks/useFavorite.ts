@@ -21,10 +21,9 @@ const useFavorite = ({listingId, currentUser} : IUseFavorite) => {
 
         return list?.includes(listingId);
     },[currentUser, listingId]);
-    console.log(currentUser);
+
     const toggleFavorite = useCallback(async (e: React.MouseEvent<HTMLDivElement>) => {
         e.stopPropagation();
-        console.log(currentUser?.name);
         
         if (!currentUser) {
             return loginModal.onOpen();
