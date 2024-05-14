@@ -23,13 +23,13 @@ interface ListingInfoProps{
     roomCount : Number;
     guestCount : Number;
     bathroomCount : Number;
-    loactionValue : string;
+    locationValue : string;
 }
 
-const ListingInfo:React.FC<ListingInfoProps> = ({user, description, category, roomCount, guestCount, loactionValue, bathroomCount}) => {
+const ListingInfo:React.FC<ListingInfoProps> = ({user, description, category, roomCount, guestCount, locationValue, bathroomCount}) => {
 
     const {getByValue} = useCountries();
-    const coordinates = getByValue(loactionValue)?.latlng;
+    const coordinates = getByValue(locationValue)?.latlng;
 
   return (
     <div className='col-span-4 flex flex-col gap-8'>

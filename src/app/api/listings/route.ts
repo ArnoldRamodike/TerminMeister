@@ -24,7 +24,7 @@ export async function POST (
     const listing = await prisma.listing.create({
         data: {
             title, description, imageSrc, category, roomCount, bathroomCount, guestCount, 
-            loactionValue: location.value, 
+            locationValue: location.value, 
             price: parseInt(price, 10),
             userId: currentUser.id
         }
