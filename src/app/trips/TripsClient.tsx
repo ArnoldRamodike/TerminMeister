@@ -45,7 +45,7 @@ const TripsClient: React.FC<TripsClientProps> = ({reservations, currentUser }) =
             <ListingCard
               key={reservation.id}
               data={reservation.listing}
-              // reservation={reservation}
+              reservation={reservation}
               actionId={reservation.id}
               onAction={onCancel}
               disabled={deletingId === reservation.id}
